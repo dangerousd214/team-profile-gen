@@ -6,6 +6,8 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+const render = require("./lib/htmlwrite");
+
 const theTEAM = [ ];
 const OUTPUT_DIR = path.resolve(__dirname, "template");
 const outputPath = path.join(OUTPUT_DIR, "profile.html");
@@ -76,14 +78,14 @@ function managerSelection(){
         },
         {
             type: "input",
-            name: "phoneNumber",
+            name: "officeNumber",
             message: "Enter office number where one can reach the manager: "
         },
     ]).then(function(response){
     
         console.log("Manager data: ", response);
 
-        const manager = new Manager(response.name, response.id, response.email, response.phoneNumber);
+        const manager = new Manager(response.name, response.id, response.email, response.officeNumber);
 
         theTEAM.push(manager);
 
@@ -163,8 +165,6 @@ function internSelection(){
         const intern = new Intern(response.name, response.id, response.email, response.school);
 
         theTEAM.push(intern);
-
-
 
         init();
 
