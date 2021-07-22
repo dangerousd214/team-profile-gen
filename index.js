@@ -44,7 +44,7 @@ function init(){
         else if(response.selectPosition=== "Show Team"){
 
             console.log("Let's display the team!");
-            
+            console.log('theTeam ' +JSON.stringify(theTEAM) );
             fs.writeFile(outputPath,render(theTEAM), function(error){
                 if(error) throw error;
                 console.log("Congratulations! Checkout the employee summary");
